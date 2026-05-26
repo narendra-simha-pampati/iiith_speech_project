@@ -2,10 +2,7 @@ import os
 import pickle
 import sys
 
-# Ensure project directory is in import path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from project.utils import get_dataset_df, get_word_disjoint_splits, build_vocab, cache_dataset_features
+from utils import get_dataset_df, get_word_disjoint_splits, build_vocab, cache_dataset_features
 
 def main():
     print("=== TESS Multimodal Feature Extraction & Caching ===")

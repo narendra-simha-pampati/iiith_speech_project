@@ -10,9 +10,9 @@ def run_script(script_path):
     print(f"\n>>> Running: {script_path}")
     venv_python = "/Applications/Projects/IIITH_project/Indic-Accent-Identification/venv/bin/python"
     
-    # Copy environment and add workspace root to PYTHONPATH so 'project' module resolves correctly
+    # Copy environment and add workspace root to PYTHONPATH so modules resolve correctly
     env = os.environ.copy()
-    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    project_root = os.path.dirname(os.path.abspath(__file__))
     env["PYTHONPATH"] = project_root + (":" + env["PYTHONPATH"] if "PYTHONPATH" in env else "")
     
     # Run the script using the project's virtual environment python
@@ -24,29 +24,29 @@ def run_script(script_path):
 
 def main():
     print("=================== STARTING ALL EXPERIMENTS ===================")
-    project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    project_dir = os.path.dirname(os.path.abspath(__file__))
     
     # 1. Train and test Speech pipeline
-    speech_train = os.path.join(project_dir, "project", "models", "speech_pipeline", "train.py")
-    speech_test = os.path.join(project_dir, "project", "models", "speech_pipeline", "test.py")
+    speech_train = os.path.join(project_dir, "models", "speech_pipeline", "train.py")
+    speech_test = os.path.join(project_dir, "models", "speech_pipeline", "test.py")
     run_script(speech_train)
     run_script(speech_test)
     
     # 2. Train and test Text pipeline
-    text_train = os.path.join(project_dir, "project", "models", "text_pipeline", "train.py")
-    text_test = os.path.join(project_dir, "project", "models", "text_pipeline", "test.py")
+    text_train = os.path.join(project_dir, "models", "text_pipeline", "train.py")
+    text_test = os.path.join(project_dir, "models", "text_pipeline", "test.py")
     run_script(text_train)
     run_script(text_test)
     
     # 3. Train and test Fusion pipeline
-    fusion_train = os.path.join(project_dir, "project", "models", "fusion_pipeline", "train.py")
-    fusion_test = os.path.join(project_dir, "project", "models", "fusion_pipeline", "test.py")
+    fusion_train = os.path.join(project_dir, "models", "fusion_pipeline", "train.py")
+    fusion_test = os.path.join(project_dir, "models", "fusion_pipeline", "test.py")
     run_script(fusion_train)
     run_script(fusion_test)
     
     print("\n=================== ANALYZING ALL RESULTS ===================")
     
-    results_dir = os.path.join(project_dir, "project", "Results")
+    results_dir = os.path.join(project_dir, "Results")
     
     # Load all results
     speech_res_path = os.path.join(results_dir, "speech_results.pkl")
@@ -120,7 +120,7 @@ The Silhouette Score measures how similar an object is to its own cluster compar
     paths = fusion_res["paths"]
     
     failures = []
-    from project.utils import EMOTIONS
+    from utils import EMOTIONS
     
     for idx in range(len(predictions)):
         pred = predictions[idx]

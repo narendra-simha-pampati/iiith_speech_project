@@ -9,8 +9,8 @@ from torch.utils.data import DataLoader
 # Ensure the project root is in python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from project.models_def import SpeechEmotionModel
-from project.utils import MultimodalDataset
+from models_def import SpeechEmotionModel
+from utils import MultimodalDataset
 
 def train():
     print("=== Training Speech-only Emotion Recognition Model ===")
@@ -20,7 +20,7 @@ def train():
     cache_path = os.path.join(project_dir, "cached_data.pkl")
     
     if not os.path.exists(cache_path):
-        print(f"Error: Cache file {cache_path} not found. Please run project/cache_data.py first.")
+        print(f"Error: Cache file {cache_path} not found. Please run cache_data.py first.")
         return
         
     with open(cache_path, "rb") as f:

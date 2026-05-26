@@ -9,7 +9,6 @@ The system is trained and evaluated on the **Toronto Emotional Speech Set (TESS)
 ## 📂 Project Structure
 
 ```
-project/
 ├── models/
 │   ├── speech_pipeline/
 │   │   ├── train.py          # Speech-only model training
@@ -67,27 +66,27 @@ Make sure you have Python 3.9+ and activate your virtual environment:
 source /Applications/Projects/IIITH_project/Indic-Accent-Identification/venv/bin/activate
 
 # Install dependencies
-pip install -r project/requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 2. Feature Caching (Critical Optimization)
 To avoid loading and extracting MFCCs for 2,800 audio files repeatedly (which is heavy and slow), run the caching script **once**. It automatically performs deduplication, sets up the disjoint splits, extracts features, and saves them to a highly optimized serialized file:
 ```bash
-python project/cache_data.py
+python cache_data.py
 ```
-*Note: This script has already been run successfully and the cached file `project/cached_data.pkl` is fully generated!*
+*Note: The cached file `cached_data.pkl` will be fully generated at the workspace root.*
 
 ### 3. Run All Experiments & Analyses
 To train all three models (Speech, Text, Fusion) sequentially, run testing, compute the quantitative separability metrics (Silhouette Scores), and perform error analysis:
 ```bash
-python project/run_experiments.py
+python run_experiments.py
 ```
 
 This single command will:
 1. Train and test the Speech-only pipeline (saving weights and test metrics).
 2. Train and test the Text-only pipeline.
 3. Train and test the Multimodal Fusion pipeline.
-4. Populate the `project/Results/` folder with complete metrics, silhouette scores, and failure analyses.
+4. Populate the `Results/` folder with complete metrics, silhouette scores, and failure analyses.
 
 ---
 
@@ -97,4 +96,4 @@ This single command will:
 2. **Text Modality is Semantically Neutral**: The text transcripts (e.g., `"say the word back"`, `"say the word date"`) contain zero semantic emotional information. Since we enforce a strict **word-disjoint split** (unseen words in the test set), the Text-only model performs exactly like a **random guess (~14.3% accuracy)**.
 3. **Multimodal Robustness**: In the Fusion model, the network learns to weight the speech modality heavily and ignore the neutral text features, preserving the outstanding classification performance (**~98% accuracy**).
 
-For a deep dive into the experimental logs, cluster separability metrics, and error analysis, please check [Report.md](file:///Applications/Projects/iiith_final/project/Report.md).
+For a deep dive into the experimental logs, cluster separability metrics, and error analysis, please check [Report.md](file:///Applications/Projects/iiith_final/Report.md).

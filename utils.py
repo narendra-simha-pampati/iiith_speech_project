@@ -12,7 +12,6 @@ EMOTION_TO_IDX = {emo: idx for idx, emo in enumerate(EMOTIONS)}
 
 # Define carrier phrase vocabulary
 # "say the word <word>"
-# Total vocabulary will be: <pad>, <unk>, say, the, word, plus 200 target words.
 vocab = ['<pad>', '<unk>', 'say', 'the', 'word']
 
 def get_dataset_df(dataset_dir="/Users/narendra/Downloads/dataset_tess"):
