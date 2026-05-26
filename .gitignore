@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+
+# Large Model weights & Cached data (Keep the code repo clean)
+project/cached_data.pkl
+project/models/speech_pipeline/*.pth
+project/models/speech_pipeline/*.pkl
+project/models/text_pipeline/*.pth
+project/models/text_pipeline/*.pkl
+project/models/fusion_pipeline/*.pth
+project/models/fusion_pipeline/*.pkl
+project/Results/*.pkl
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
